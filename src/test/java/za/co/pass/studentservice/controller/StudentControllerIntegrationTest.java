@@ -45,7 +45,7 @@ public class StudentControllerIntegrationTest {
             "john.doe@example.com",
             "123 Main St",
             "2000-01-01",
-            "2024-01-01"
+            "2025-01-01"
         );
         Response response = given()
                 .port(port)
@@ -306,6 +306,7 @@ public class StudentControllerIntegrationTest {
                 "2001-01-01",
                 "2024-01-01"
         );
+
         Response firstResponse = given()
                 .port(port)
                 .contentType(ContentType.JSON)
@@ -315,6 +316,7 @@ public class StudentControllerIntegrationTest {
                 .then()
                 .statusCode(200)
                 .extract().response();
+
         String firstStudentId = firstResponse.jsonPath().getString("id");
 
         // Create a second student
@@ -325,6 +327,7 @@ public class StudentControllerIntegrationTest {
             "2001-01-01",
             "2024-01-01"
         );
+
         Response secondResponse = given()
             .port(port)
             .contentType(ContentType.JSON)
@@ -334,6 +337,7 @@ public class StudentControllerIntegrationTest {
             .then()
             .statusCode(200)
             .extract().response();
+
         String secondStudentId = secondResponse.jsonPath().getString("id");
 
         // Try to update second student using a first student id
@@ -345,6 +349,7 @@ public class StudentControllerIntegrationTest {
             "2001-01-01",
             "2024-01-01"
         );
+
         given()
             .port(port)
             .contentType(ContentType.JSON)

@@ -50,6 +50,14 @@ A Spring Boot microservice for managing student data as part of a personal acade
 - `PUT /students/{id}` - Update a student
 - `DELETE /students/{id}` - Delete a student
 
+## API Documentation
+
+Interactive API documentation is available via Swagger UI. After starting the service, you can access it at:
+
+- [http://localhost:4000/swagger-ui.html](http://localhost:4000/swagger-ui.html)
+
+This interface allows you to explore and test all available endpoints directly from your browser.
+
 ## Running Tests
 ```bash
 ./mvnw test
@@ -67,4 +75,3 @@ This project is licensed under the MIT License.
 
 ---
 *Update the repository URL in this README after creating your GitHub repository.*
-

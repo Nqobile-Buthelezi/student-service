@@ -1,5 +1,7 @@
 package za.co.pass.studentservice.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.groups.Default;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,6 +18,7 @@ import java.util.UUID;
 @RequestMapping("/students") // This displays that this particular controller
 // will handle requests relating to the /students endpoint
 // http://localhost:4000/students
+@Tag(name = "Student", description = "API for managing students")
 public class StudentController {
 
     private final StudentService studentService;
@@ -28,6 +31,7 @@ public class StudentController {
 
     // Create methods to handle CRUD requests
     @GetMapping
+    @Operation(summary = "Get all students", description = "Retrieves a list of all students")
     public ResponseEntity<List<StudentResponseDTO>> getStudents() {
         List<StudentResponseDTO> students = studentService.getStudents();
         return ResponseEntity.ok().body(students); // Respond with status code 200,
@@ -35,6 +39,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a student by ID", description = "Retrieves a student by their unique ID")
     public ResponseEntity<StudentResponseDTO> getStudent(@PathVariable UUID id) {
         // Path variable is used to extract the id from the URL
         StudentResponseDTO studentResponseDTO = studentService.getStudent(id);
@@ -43,8 +48,10 @@ public class StudentController {
     }
 
     @PostMapping
+    @Operation(summary = "Create a new student", description = "Creates a new student with the provided details")
     public ResponseEntity<StudentResponseDTO> createStudent(
-            @Validated({Default.class, CreatePatientValidationGroup.class}) // allows additional validation groups to be used
+            @Validated({Default.class, CreatePatientValidationGroup.class})
+            // allows additional validation groups to be used
             @RequestBody StudentRequestDTO studentRequestDTO) {
         // Valid checks if the validation
         // we added is adhered to, Request Body annotation takes the JSON and
@@ -54,6 +61,7 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update an existing student", description = "Updates the details of an existing student")
     public ResponseEntity<StudentResponseDTO> updateStudent(
             @PathVariable UUID id,
             @Validated(Default.class) // student can be updated without the CreatePatientValidationGroup
@@ -66,6 +74,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a student", description = "Deletes a student by their unique ID")
     public ResponseEntity<Void> deleteStudent(@PathVariable UUID id) {
         // Deletes the student with the given id
         studentService.deleteStudent(id);
