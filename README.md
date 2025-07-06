@@ -22,10 +22,10 @@ A Spring Boot microservice for managing student data as part of a personal acade
 - Maven
 
 ### Setup
-1. Clone this repository (replace `<your-github-username>` and `<repo-name>` after creating your GitHub repo):
+1. Clone this repository (replace `Nqobile-Buthelezi` and `student-service` after creating your GitHub repo):
    ```bash
-   git clone https://github.com/<your-github-username>/<repo-name>.git
-   cd <repo-name>
+   git clone https://github.com/Nqobile-Buthelezi/student-service.git
+   cd student-service
    ```
 2. Build the project:
    ```bash
@@ -70,8 +70,4 @@ This interface allows you to explore and test all available endpoints directly f
 4. Push to the branch (`git push origin feature/YourFeature`)
 5. Open a pull request
 
-## License
-This project is licensed under the MIT License.
 
----
-*Update the repository URL in this README after creating your GitHub repository.*
